@@ -493,23 +493,267 @@ gsb = f"""
 st.markdown(band(gsb, "navy"), unsafe_allow_html=True)
 
 # ---------------------------- PKKMB EVENT ----------------------------
-pkkmb = f"""
-{heading("PKKMB EVENT COMMITTEE", "PKKMB EVENT COMMITTEE",
-         "Panitia Acara Pengenalan Kehidupan Kampus Mahasiswa Baru (PKKMB)")}
-<div class="bubble-row">{bubble("Event Planing & Coordination")}{bubble("Team Work")}{bubble("Time Mangement")}</div>
-<div class="pkkmb-layout" style="margin-top:1.2rem">
- {image("pkkmb1.png","Dokumentasi panitia PKKMB")}
- {image("pkkmb2.png","Dokumentasi kegiatan PKKMB")}
-</div>
-<div class="pkkmb-bottom">
- {image("pkkmb3.png","Dokumentasi kegiatan PKKMB")}
- <div class="pkkmb-text"><b>Kontribusi:</b><br>
- Perencanaan dan koordinasi rangkaian acara PKKMB, termasuk penyusunan rundown,
- pengaturan waktu setiap sesi, koordinasi dengan penanggung jawab kegiatan,
- serta evaluasi pelaksanaan acara</div>
-</div>
+
+pkkmb = """
+<style>
+/* PKKMB — layout khusus mengikuti komposisi idePorto.pdf */
+.pk-section {
+    width: 100%;
+    background: #FFFFFF;
+    padding: clamp(18px, 3vw, 42px) 0;
+    color: #0D1C42;
+}
+
+.pk-inner {
+    width: min(1440px, 96%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.82fr 1.55fr;
+    grid-template-rows: auto auto;
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* Panel kiri atas: foto pembicara */
+.pk-photo-left {
+    background: #0D1C42;
+    border-radius: 0 0 30px 30px;
+    padding: clamp(14px, 2.5vw, 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.pk-photo-left img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 440px;
+    object-fit: contain;
+    border-radius: 0 0 18px 18px;
+}
+
+/* Panel kanan atas: judul, bubble, dan foto seluruh panitia */
+.pk-main {
+    background: #0D1C42;
+    color: #FFFFFF;
+    border-radius: 0 0 0 30px;
+    padding: clamp(18px, 3vw, 38px);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pk-title {
+    color: #FFFFFF;
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    line-height: 1.15;
+    font-weight: 800;
+    margin: 0 0 8px;
+}
+
+.pk-subtitle {
+    color: #FFFFFF;
+    font-size: clamp(.85rem, 1.35vw, 1.2rem);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.pk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0 26px;
+}
+
+.pk-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0D1C42;
+    background: #FFFFFF;
+    border-radius: 999px;
+    padding: 7px 13px;
+    font-size: clamp(.7rem, 1vw, .88rem);
+    font-weight: 700;
+}
+
+/* Foto utama: seluruh anggota panitia harus terlihat */
+.pk-group-photo {
+    width: 100%;
+    background: #0D1C42;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pk-group-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 460px;
+    object-fit: contain;
+    border-radius: 24px;
+}
+
+/* Panel kiri bawah: dokumentasi kegiatan */
+.pk-bottom-left {
+    background: #0D1C42;
+    border-radius: 0 30px 0 0;
+    padding: clamp(14px, 2.5vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+.pk-bottom-left img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+/* Panel kanan bawah: kontribusi */
+.pk-contribution {
+    background: #0D1C42;
+    color: #FFFFFF;
+    border-radius: 0 0 0 30px;
+    padding: clamp(20px, 3.5vw, 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.pk-contribution h3 {
+    color: #FFFFFF;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 800;
+    letter-spacing: .08em;
+    margin: 0 0 10px;
+}
+
+.pk-contribution p {
+    color: #FFFFFF;
+    font-size: clamp(.9rem, 1.45vw, 1.2rem);
+    line-height: 1.65;
+    letter-spacing: .025em;
+    margin: 0;
+}
+
+/* Responsif saat layar mengecil atau browser di-zoom */
+@media (max-width: 760px) {
+    .pk-inner {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        width: 94%;
+        gap: 12px;
+    }
+
+    .pk-photo-left,
+    .pk-main,
+    .pk-bottom-left,
+    .pk-contribution {
+        border-radius: 18px;
+    }
+
+    .pk-photo-left img {
+        max-height: 420px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .pk-group-photo img,
+    .pk-bottom-left img {
+        max-height: none;
+        width: 100%;
+    }
+
+    .pk-main {
+        gap: 10px;
+    }
+}
+</style>
+
+<section class="pk-section">
+  <div class="pk-inner">
+
+    <!-- FOTO 1: DOKUMENTASI PANITIA -->
+    <div class="pk-photo-left">
+      <img src="data:image/png;base64,PKKMB1_IMAGE"
+           alt="Dokumentasi panitia PKKMB">
+    </div>
+
+    <!-- JUDUL, KETERANGAN, DAN FOTO SELURUH PANITIA -->
+    <div class="pk-main">
+      <div>
+        <h2 class="pk-title">PKKMB EVENT COMMITTEE</h2>
+
+        <p class="pk-subtitle">
+          Panitia Acara Pengenalan Kehidupan Kampus Mahasiswa Baru (PKKMB)
+        </p>
+
+        <div class="pk-tags">
+          <span class="pk-tag">Event Planing &amp; Coordination</span>
+          <span class="pk-tag">Team Work</span>
+          <span class="pk-tag">Time Mangement</span>
+        </div>
+      </div>
+
+      <div class="pk-group-photo">
+        <img src="data:image/png;base64,PKKMB2_IMAGE"
+             alt="Foto seluruh panitia PKKMB">
+      </div>
+    </div>
+
+    <!-- FOTO 3: DOKUMENTASI KEGIATAN -->
+    <div class="pk-bottom-left">
+      <img src="data:image/png;base64,PKKMB3_IMAGE"
+           alt="Dokumentasi kegiatan PKKMB">
+    </div>
+
+    <!-- KONTRIBUSI -->
+    <div class="pk-contribution">
+      <h3>Kontribusi:</h3>
+      <p>
+        Perencanaan dan koordinasi rangkaian acara PKKMB, termasuk
+        penyusunan rundown, pengaturan waktu setiap sesi, koordinasi
+        dengan penanggung jawab kegiatan, serta evaluasi pelaksanaan acara
+      </p>
+    </div>
+
+  </div>
+</section>
 """
-st.markdown(band(pkkmb, "white"), unsafe_allow_html=True)
+
+# Masukkan gambar dari folder assets tanpa mengubah nama file.
+import base64
+from pathlib import Path
+
+_pk_assets = Path(__file__).parent / "assets"
+
+def _pk_encode(filename):
+    return base64.b64encode(
+        (_pk_assets / filename).read_bytes()
+    ).decode("utf-8")
+
+pkkmb = (
+    pkkmb
+    .replace("PKKMB1_IMAGE", _pk_encode("pkkmb1.png"))
+    .replace("PKKMB2_IMAGE", _pk_encode("pkkmb2.png"))
+    .replace("PKKMB3_IMAGE", _pk_encode("pkkmb3.png"))
+)
+
+st.markdown(pkkmb, unsafe_allow_html=True)
+# ---------------------------------------------------------------------
 
 # ------------------------------- CERTIFICATES ------------------------
 certificates = [
