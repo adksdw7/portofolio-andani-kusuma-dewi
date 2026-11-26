@@ -1199,3 +1199,110 @@ cert_section = f"""
 </div>
 """
 st.markdown(band(cert_section, "navy"), unsafe_allow_html=True)
+
+# ============================================================
+# FINAL FOOTER — NAMA DAN KONTAK
+# Tambahkan di PALING AKHIR app.py
+# ============================================================
+
+st.markdown("""
+<style>
+/* Sembunyikan footer lama agar tidak tampil dua kali */
+section.band.navy .footer {
+    display: none !important;
+}
+
+/* Footer baru */
+.final-contact-footer {
+    width: 100%;
+    box-sizing: border-box;
+    background: #0D1C42;
+    color: #FFFFFF;
+    padding: 38px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.final-contact-footer h2 {
+    margin: 0;
+    color: #FFFFFF;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(25px, 3vw, 36px);
+    font-weight: 700;
+}
+
+.final-contact-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.final-contact-icons a {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    transition: transform .25s ease;
+}
+
+.final-contact-icons a:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.final-contact-icons img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 600px) {
+    .final-contact-footer {
+        gap: 12px;
+        flex-direction: column;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
+FOOTER_EMAIL = (
+    "https://mail.google.com/mail/?view=cm&fs=1"
+    "&to=andanikd754@gmail.com"
+    "&su=Portofolio%20Andani%20Kusuma%20Dewi"
+)
+
+footer_html = f"""
+<div class="final-contact-footer">
+    <h2>Andani Kusuma Dewi</h2>
+
+    <div class="final-contact-icons">
+
+        <a href="{WHATSAPP}"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="WhatsApp">
+            <img src="{image_data('wa.png')}" alt="WhatsApp">
+        </a>
+
+        <a href="{LINKEDIN}"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="LinkedIn">
+            <img src="{image_data('linkedin.png')}" alt="LinkedIn">
+        </a>
+
+        <a href="{FOOTER_EMAIL}"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="Email">
+            <img src="{image_data('email.png')}" alt="Email">
+        </a>
+
+    </div>
+</div>
+"""
+
+st.markdown(footer_html, unsafe_allow_html=True)
