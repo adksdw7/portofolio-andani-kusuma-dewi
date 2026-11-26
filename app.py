@@ -23,7 +23,7 @@ NAVY = "#0D1C42"
 WHITE = "#FFFFFF"
 
 LINKEDIN = "https://linkedin.com/in/andani-kusuma-dewi-660441324"
-EMAIL = "mailto:andanikd754@gmail.com?subject=Portofolio%20Andani%20Kusuma%20Dewi"
+EMAIL = "https://mail.google.com/mail/?view=cm&fs=1&to=andanikd754@gmail.com&su=Portofolio%20Andani%20Kusuma%20Dewi"
 WHATSAPP = "https://wa.me/6281270052004"
 
 URL = {
@@ -772,7 +772,7 @@ contact_icons_html = (
     '<span class="cover-contact-label">Info Kontak</span>'
     + cover_contact_icon("wa.png", "WhatsApp", WHATSAPP, "WhatsApp")
     + cover_contact_icon("linkedin.png", "LinkedIn", LINKEDIN, "LinkedIn")
-    + cover_contact_icon("email.png", "Email", EMAIL, "Email", external=False)
+    + cover_contact_icon("email.png", "Email", EMAIL, "Email")
     + '</div>'
 )
 cover = f"""
