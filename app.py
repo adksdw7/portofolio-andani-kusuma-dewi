@@ -903,11 +903,11 @@ academic_cards = [
 ]
 paudqu = f"""
 <div class="project-card">
- <div class="image-wrap">{image("tim.png","Proyek Tim; Laporan Proyek Perangkat Lunak Website PaudQu Al-Ikhlas")}<span class="hover-label">Dokumentasi Proyek</span></div>
+ <div class="image-wrap">{image("tim.png","Laporan Proyek Perangkat Lunak Website PaudQu Al-Ikhlas")}<span class="hover-label">Dokumentasi Proyek</span></div>
  <div class="project-copy">
   <div class="card-kicker">Mata Kuliah Proyek Perancangan Sistem Informasi</div>
   <h3>Proyek Tim; Laporan Proyek Perangkat Lunak Website PaudQu Al-Ikhlas</h3>
-  <p>Proyek tim dalam pengembangan perangkat lunak website pendaftaran siswa baru PAUDQu Al-Ikhlas. Menganalisis dan mendokumentasikan kebutuhan klien melalui wawancara dan observasi, Software Requirements Specification (SRS), dokumentasi rancangan sistem (SDD), ERD, pengujian sistem, buku panduan penggunaan, serta berita acara serah terima</p>
+  <p>Proyek tim dalam pengembangan perangkat lunak website pendaftaran siswa baru PAUDQu Al-Ikhlas. Menganalisis dan mendokumentasikan kebutuhan klien melalui wawancara dan observasi, menyusun Software Requirements Specification (SRS), dokumentasi rancangan sistem (SDD), ERD, pengujian sistem, buku panduan penggunaan, serta berita acara serah terima</p>
  </div>
 </div>
 """
